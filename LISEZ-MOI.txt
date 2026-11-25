@@ -1,0 +1,43 @@
+PORTFOLIO V2 — Dieudonné Gandaho
+=================================
+
+Contenu du dossier
+------------------
+index.html        La page du site
+css/style.css     Le design (couleurs, polices, mise en page)
+js/config.js      TON CONTENU : vidéos, avis, FAQ, liens, textes
+js/main.js        Le fonctionnement (vidéo d'accueil, animations, lecteurs YouTube,
+                  « Voir plus », FAQ, formulaire de devis → WhatsApp)
+assets/           Ta photo, le showreel et son image d'aperçu
+
+
+Modifier le contenu
+-------------------
+Tout se passe dans js/config.js (ouvre-le avec le Bloc-notes ou VS Code).
+
+Ajouter une vidéo YouTube dans une section :
+  1. Prends le lien, par exemple https://youtu.be/MaWPSqrK31Y
+     ou https://youtube.com/shorts/2QqnlxCg2oM
+  2. L'identifiant, c'est la partie après youtu.be/ ou après shorts/
+     (ici : MaWPSqrK31Y ou 2QqnlxCg2oM)
+  3. Ajoute une ligne dans la bonne section :
+     { id: "MaWPSqrK31Y", titre: "Le titre à afficher" },
+
+Attention à bien garder les guillemets et la virgule en fin de ligne.
+
+
+Mettre le site en ligne gratuitement (Netlify Drop)
+---------------------------------------------------
+1. Va sur https://app.netlify.com/drop
+2. Glisse-dépose le dossier « portfolio » entier dans la page
+3. Netlify te donne un lien du type https://nom-au-hasard.netlify.app
+4. Crée un compte gratuit pour garder le site et changer son nom
+
+Pour mettre à jour : refais un glisser-déposer du dossier modifié
+dans ton site sur Netlify (onglet « Deploys »).
+
+
+Changer la couleur du site
+--------------------------
+Dans css/style.css, tout en haut : modifiez --accent (et --accent-text,
+--accent-glow, --accent-soft pour les versions claires et lumineuses).
