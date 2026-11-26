@@ -325,3 +325,9 @@ p { margin: 0; }
 .video__frame .plyr--youtube.plyr--paused .plyr__poster,
 .video__frame .plyr--youtube.plyr--stopped .plyr__poster { display: block !important; opacity: 1 !important; background-size: cover; }
 .video__frame .plyr__control--overlaid { background: var(--accent); box-shadow: 0 0 30px var(--accent-soft); }
+/* Plein écran (téléphones sans plein écran natif, iPhone) : la vidéo couvre tout l'écran, on reste sur le site */
+.video__frame .plyr.plyr--fullscreen-fallback { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 10000000; border-radius: 0; }
+body.is-fs { overflow: hidden; }
+body.is-fs .nav { display: none; }
+body.is-fs .ambient { z-index: auto; isolation: auto; }
+.video__frame .plyr:fullscreen, .video__frame .plyr--fullscreen-fallback { background: #000; }
