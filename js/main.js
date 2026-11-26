@@ -133,6 +133,7 @@
     document.head.appendChild(css);
     var js = document.createElement('script'); js.src = 'vendor/plyr/plyr.min.js';
     js.onload = function () { plyrState = 2; plyrQueue.splice(0).forEach(function (f) { f(); }); };
+    js.onerror = function () { plyrState = 0; plyrQueue.splice(0); window.__plyrFailed = true; $$('.is-player .js-yt').forEach(function (el) { var vid = el.getAttribute('data-plyr-embed-id'); el.outerHTML = '<iframe src="https://www.youtube.com/embed/' + vid + '?autoplay=1&rel=0&playsinline=1&origin=' + encodeURIComponent(location.origin) + '" title="Vidéo YouTube" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'; }); };
     document.head.appendChild(js);
   };
 
@@ -156,12 +157,16 @@
             iconUrl: 'vendor/plyr/plyr.svg',
             controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
             settings: [],
+            fullscreen: { enabled: true, fallback: true, iosNative: false },
             tooltips: { controls: false, seek: false },
             i18n: { play: 'Lire', pause: 'Pause', mute: 'Couper le son', unmute: 'Activer le son', enterFullscreen: 'Plein écran', exitFullscreen: 'Quitter le plein écran' },
             youtube: { rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1, noCookie: false }
           });
           // Une seule vidéo à la fois
           p.on('play', function () { players.forEach(function (o) { if (o !== p) o.pause(); }); video.dataset.auto = '1'; video.pause(); });
+          // Plein écran : la vidéo s'agrandit sur la page, sans quitter le portfolio
+          p.on('enterfullscreen', function () { document.body.classList.add('is-fs'); });
+          p.on('exitfullscreen', function () { document.body.classList.remove('is-fs'); });
           players.push(p);
         });
       } else {
