@@ -149,6 +149,7 @@
         var frame = play.parentNode;
         var tall = !!frame.closest('.grid--tall');
         frame.classList.add('is-player');
+        if (tall) frame.classList.add('is-tall');
         frame.innerHTML = '<div class="js-yt" data-plyr-provider="youtube" data-plyr-embed-id="' + id + '"></div>';
         loadPlyr(function () {
           var p = new window.Plyr(frame.querySelector('.js-yt'), {
