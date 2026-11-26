@@ -331,3 +331,6 @@ body.is-fs { overflow: hidden; }
 body.is-fs .nav { display: none; }
 body.is-fs .ambient { z-index: auto; isolation: auto; }
 .video__frame .plyr:fullscreen, .video__frame .plyr--fullscreen-fallback { background: #000; }
+/* Plein écran : la vidéo garde son format (16:9 ou vertical 9:16), centrée sur fond noir, sans zoom */
+.video__frame .plyr:fullscreen .plyr__video-wrapper, .video__frame .plyr--fullscreen-fallback .plyr__video-wrapper { position: relative !important; height: 100%; margin: 0 auto; }
+.video__frame.is-tall .plyr:fullscreen .plyr__video-wrapper, .video__frame.is-tall .plyr--fullscreen-fallback .plyr__video-wrapper { width: min(100%, calc(100vh * 9 / 16)); width: min(100%, calc(100dvh * 9 / 16)); }
